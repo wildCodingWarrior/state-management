@@ -1,10 +1,10 @@
 import React from "react";
 import { styled } from "styled-components";
 import TodoItem from "./TodoItem";
-import { useSelector } from "react-redux";
+import { useTodoStore } from "../store/useTodoStore";
 
 const TodoList = () => {
-  const { todos } = useSelector((state) => state.todoReducer);
+  const todos = useTodoStore((state) => state.todos);
 
   return (
     <TodoListContainer>

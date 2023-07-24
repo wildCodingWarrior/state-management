@@ -1,20 +1,19 @@
 import React from "react";
 import { styled } from "styled-components";
-import { useDispatch } from "react-redux";
-import { deleteTodo, updateTodo } from "../redux/modules/todoSlice";
+import { useTodoStore } from "../store/useTodoStore";
 
 const TodoItem = (props) => {
   const { todo } = props;
   const { id, title, content, isDone } = todo;
 
-  const dispatch = useDispatch();
+  const { deleteTodo, updateTodo } = useTodoStore((state) => state);
 
   const deleteTodoItem = (id) => {
-    dispatch(deleteTodo(id));
+    deleteTodo(id);
   };
 
   const updateTodoItem = (id) => {
-    dispatch(updateTodo(id));
+    updateTodo(id);
   };
 
   return (
