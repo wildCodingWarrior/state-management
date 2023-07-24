@@ -1,19 +1,29 @@
 import React from "react";
 import { styled } from "styled-components";
-import { useTodoStore } from "../store/useTodoStore";
+import { todosAtom } from "../store/atom";
+import { useAtom } from "jotai";
 
 const TodoItem = (props) => {
   const { todo } = props;
   const { id, title, content, isDone } = todo;
-
-  const { deleteTodo, updateTodo } = useTodoStore((state) => state);
+  const [_, setTodos] = useAtom(todosAtom);
 
   const deleteTodoItem = (id) => {
-    deleteTodo(id);
+    setTodos((prev) => {
+      return prev.filter((todo) => todo.id !== id);
+    });
   };
 
   const updateTodoItem = (id) => {
-    updateTodo(id);
+    setTodos((prev) => {
+      return prev.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isDone: !todo.isDone };
+        } else {
+          return todo;
+        }
+      });
+    });
   };
 
   return (

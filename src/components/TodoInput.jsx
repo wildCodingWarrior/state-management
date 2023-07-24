@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
-import { useTodoStore } from "../store/useTodoStore";
+import { todosAtom } from "../store/atom";
+import { useAtom } from "jotai";
 
 const TodoInput = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const { addTodo } = useTodoStore((state) => state);
+  const [_, setTodos] = useAtom(todosAtom);
 
   const handleClick = () => {
-    addTodo({
-      id: Date.now(),
-      title,
-      content,
-      isDone: false,
+    setTodos((prev) => {
+      return [...prev, { id: Date.now(), title, content, isDone: false }];
     });
   };
 

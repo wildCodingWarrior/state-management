@@ -1,10 +1,11 @@
 import React from "react";
 import { styled } from "styled-components";
 import TodoItem from "./TodoItem";
-import { useTodoStore } from "../store/useTodoStore";
+import { useAtom } from "jotai";
+import { todosAtom } from "../store/atom";
 
 const TodoList = () => {
-  const todos = useTodoStore((state) => state.todos);
+  const [todos] = useAtom(todosAtom);
 
   return (
     <TodoListContainer>
