@@ -2,7 +2,11 @@ import React from "react";
 import GlobalStyle from "../styles/GlobalStyle";
 import { styled } from "styled-components";
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+  children?: React.ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
   return (
     <PageLayout>
       <GlobalStyle />

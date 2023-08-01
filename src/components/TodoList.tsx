@@ -1,10 +1,9 @@
-import React from "react";
 import { styled } from "styled-components";
 import TodoItem from "./TodoItem";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../hooks";
 
 const TodoList = () => {
-  const { todos } = useSelector((state) => state.todoReducer);
+  const { todos } = useAppSelector((state) => state.todoReducer);
 
   return (
     <TodoListContainer>
