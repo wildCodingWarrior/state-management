@@ -40,7 +40,7 @@ export const counterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(__getTodo.fulfilled, (state, action) => {
-      action.payload;
+      state.todos = action.payload;
     });
   },
 });
