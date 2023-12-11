@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GlobalStyle from "../styles/GlobalStyle";
 import { styled } from "styled-components";
+import { fetchTodos } from "../store/useTodoStore";
 
 const Layout = ({ children }) => {
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
   return (
     <PageLayout>
       <GlobalStyle />
