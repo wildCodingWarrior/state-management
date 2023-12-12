@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
 import { useDispatch } from "react-redux";
-import { deleteTodo, updateTodo } from "../redux/modules/todoSlice";
+import { useTodoStore } from "../store/useTodoStore";
 
 interface TodoItemProps {
   todo: Todo;
@@ -11,14 +11,14 @@ const TodoItem = (props: TodoItemProps) => {
   const { todo } = props;
   const { id, title, content, isDone } = todo;
 
-  const dispatch = useDispatch();
+  const { deleteTodo, updateTodo } = useTodoStore();
 
   const deleteTodoItem = (id: number) => {
-    dispatch(deleteTodo(id));
+    deleteTodo(id);
   };
 
   const updateTodoItem = (id: number) => {
-    dispatch(updateTodo(id));
+    updateTodo(id);
   };
 
   return (

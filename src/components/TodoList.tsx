@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import TodoItem from "./TodoItem";
-import { useAppSelector } from "../hooks";
+import { useTodoStore } from "../store/useTodoStore";
 
 const TodoList = () => {
-  const { todos } = useAppSelector((state) => state.todoReducer);
+  const { todos } = useTodoStore();
 
   return (
     <TodoListContainer>

@@ -1,23 +1,20 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
-import { addTodo } from "../redux/modules/todoSlice";
-import { useAppDispatch } from "../hooks";
+import { useTodoStore } from "../store/useTodoStore";
 
 const TodoInput = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const dispatch = useAppDispatch();
+  const { addTodo } = useTodoStore();
 
   const handleClick = () => {
-    dispatch(
-      addTodo({
-        id: Date.now(),
-        title,
-        content,
-        isDone: false,
-      })
-    );
+    addTodo({
+      id: Date.now(),
+      title,
+      content,
+      isDone: false,
+    });
   };
 
   return (
